@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import Resume from './resume'
+import Add from './campus_settings'
 
 function App() {
   return (
     <div className="App">
       <Resume />
+      <Add />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
