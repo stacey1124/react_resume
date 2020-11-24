@@ -6,7 +6,8 @@ export default class AddNewSite extends React.Component {
     let childrenProps = children.props;
     console.log("children:", children);//span...
     console.log("children.props", children.props)
-    console.log("this.dialog:", this.dialog)
+    console.log("this.dialog:", this.dialog);
+        //测试暂存
     return (
       React.cloneElement(
         children, {
