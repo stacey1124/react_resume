@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default class AddNewSite extends React.Component {
+  // 新增场次
+  
   render() {
     let { children } = this.props;
     let childrenProps = children.props;

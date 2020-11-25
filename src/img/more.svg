@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="25px" viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>more</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.400000 0 0 0 0 0.400000 0 0 0 0 0.400000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+        <path d="M3,0 C4.65685425,0 6,1.34314575 6,3 C6,4.65685425 4.65685425,6 3,6 C1.34314575,6 0,4.65685425 0,3 C0,1.34314575 1.34314575,0 3,0 Z M12,0 C13.6568542,0 15,1.34314575 15,3 C15,4.65685425 13.6568542,6 12,6 C10.3431458,6 9,4.65685425 9,3 C9,1.34314575 10.3431458,0 12,0 Z M21,0 C22.6568542,0 24,1.34314575 24,3 C24,4.65685425 22.6568542,6 21,6 C19.3431458,6 18,4.65685425 18,3 C18,1.34314575 19.3431458,0 21,0 Z" id="path-2"></path>
+    </defs>
+    <g id="优化需求20201123" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="移动端-简历列表01" transform="translate(-702.000000, -339.000000)">
+            <rect fill="#F8F8F8" x="0" y="0" width="750" height="1334"></rect>
+            <g id="常用操作/更多" transform="translate(702.000000, 340.000000)" filter="url(#filter-1)">
+                <g transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) ">
+                    <g id="编组" transform="translate(0.000000, 9.000000)">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <use id="蒙版" fill="#000000" fill-rule="nonzero" xlink:href="#path-2"></use>
+                        <rect id="颜色样式" fill="#2775FF" mask="url(#mask-3)" x="0" y="-9" width="24" height="24"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

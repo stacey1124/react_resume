@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Resume from './resume'
-import Add from './campus_settings'
+import Resume from './js/resume'
+import Add from './js/campus_settings'
 
 function App() {
   return (

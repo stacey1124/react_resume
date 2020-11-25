@@ -1,0 +1,36 @@
+    /* jquery弹框 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    ul > li {
+      list-style: none;
+    }
+    .myresume .myresume-item {
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+      height: 100px;
+      line-height: 80px;
+      padding-left: 20px;
+    }
+    .delete--wrapper {
+      position: relative;
+    }
+    .myresume .resume-delete {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      position: absolute;
+      top: -55px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .myresume .icon-delete {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      background-image: url("../img/more.svg");
+      background-position: center center;
+      background-size: 24px 25px;
+      background-repeat: no-repeat;
+    }
