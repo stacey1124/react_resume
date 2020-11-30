@@ -34,3 +34,27 @@
       background-size: 24px 25px;
       background-repeat: no-repeat;
     }
+
+    .test1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0,0,0, 0.3);
+    }
+
+    .test2 {
+      animation: pop-fade-enter .25s ease-in both;
+    }
+
+    @keyframes pop-fade-enter {
+      0% {
+        background-color:rgba(0,0,0,0);
+      }
+      100% {
+        background-color:rgba(0,0,0,0.4);
+      }
+    }
+
+  

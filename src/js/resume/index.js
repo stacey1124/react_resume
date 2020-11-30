@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
 import { Button, Modal } from "antd";
 import BottomModal from './bottom-modal'
+import Popup from '../common/popup'
 import Gen from './srs.gen';
 import { Router, Route, hashHistory } from 'react-router';
 
+import classnames from 'classnames';
+
+import '../../css/bottom-modal.css'
 import '../../css/resume.css'
 import 'antd/dist/antd.css';
 export default class Resume extends React.Component {
@@ -12,6 +16,7 @@ export default class Resume extends React.Component {
     this.state = {
       visible: false,
       isDelPageVis: false,
+      isDetailPageVis: false,
       height: 0
     }
   }
@@ -33,21 +38,24 @@ export default class Resume extends React.Component {
   }
 
   showDeletePage = (e) => {
-    console.log("isDelPageVis", this.state.isDelPageVis);
     //点击时出现浮层Modal
     this.setState({
       isDelPageVis: true
     })
-
   }
 
-  deletePageVisible = ({visible, height}) => {
-    console.log("visible:", visible)
-    console.log("height:",height)
+  deletePageVisible = (visible) => {
     this.setState({
       isDelPageVis: visible,
-      height: height
     })
+  }
+
+  handleTransition = () => {
+    console.log(333)
+  }
+
+  handleClick = (e) => {
+
   }
 
   render () {
@@ -61,6 +69,14 @@ export default class Resume extends React.Component {
             我的简历20201101
             <div className="delete--wrapper">
               <div id="js-resume-delete" className="resume-delete" onClick={this.showDeletePage}>
+                <i className="icon-delete"></i>
+              </div>
+            </div>
+          </li>
+          <li className="myresume-item">
+            我的简历20201130
+            <div className="delete--wrapper">
+              <div id="js-resume-delete" className="resume-delete" onClick={this.showDatailPage}>
                 <i className="icon-delete"></i>
               </div>
             </div>

@@ -1,3 +1,13 @@
+.modal-component {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+
+}
+
 .popup-mask {
   position: absolute;
   top: 0;
@@ -7,34 +17,48 @@
   background-color:rgba(0,0,0,0.4);
 }
 
+.modal-component .popup-fade-enter {
+  animation: pop-fade-enter .25s ease-in both;
+}
+
+.modal-component .popup-fade-leave {
+  animation: pop-fade-leave .2s ease-out both;
+}
+
+.popup-slide-enter {
+  animation: pop-slide-enter .25s cubic-bezier(0,0,.2,1) both;
+}
+
+.popup-slide-leave {
+  animation: pop-slide-leave .2s cubic-bezier(.4,0,1,1) both;
+}
+
 @keyframes pop-fade-enter {
   0% {
     background-color:rgba(0,0,0,0);
   }
-  100% {
-    background-color:rgba(0,0,0,0.4);
-  }
 }
 
-@keyframes pop-fade-out {
-  0% {
-    background-color:rgba(0,0,0,0.4);
-  }
+@keyframes pop-fade-leave {
   100% {
     background-color:rgba(0,0,0,0);
   }
 }
 
-
-.popup-fade-enter {
-  animation: pop-fade-enter .25s ease-in both;
+@keyframes pop-slide-enter {
+  0% {
+    transform: translateY(100%)
+  }
 }
 
-.popup-fade-out {
-  animation: pop-fade-out .25s ease-in both;
+@keyframes pop-slide-leave {
+  to {
+    transform: translateY(100%)
+  }
 }
 
-.bottom-modal .delete--wrapper {
+
+.popup-container .delete--wrapper {
   width: 100%;
   font-size: 17px;
   background-color: #fff;
@@ -44,7 +68,7 @@
   transition: transform 200ms ease 100ms; 
 }
 
-.bottom-modal .delete__resume {
+.popup-container .delete__resume {
   color: red;
   line-height: 60px;
   height: 60px;
@@ -52,7 +76,7 @@
   border-bottom: solid 10px #eee;
 }
 
-.bottom-modal .delete__cancel {
+.popup-container .delete__cancel {
   opacity: 1;
   color: #000;
   line-height: 60px;

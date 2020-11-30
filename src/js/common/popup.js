@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { findDOMNode } from 'react-dom';
 
 import classnames from 'classnames';
 import '../../css/bottom-modal.css'
@@ -27,7 +26,8 @@ export default class BottomModal extends React.Component {
 
   handleCancel = () => {
     const visible = false;
-    this.props.isPageShow(visible);
+    // const height = 130;
+    this.props.isPageShow({visible});
   }
 
   handleAnimationEnd = (e) => {
@@ -44,7 +44,8 @@ export default class BottomModal extends React.Component {
 
   render() { 
     const { vis } = this.state;
-    const { isDelPageVis } = this.props
+    const { isDelPageVis, children } = this.props
+    console.log("children:", children)
     return (
       <Fragment>
         <div className="modal-component" style={{display: vis ? "block" : "none"}}>
@@ -53,10 +54,6 @@ export default class BottomModal extends React.Component {
           >
           </div>
           <div className="popup-container">
-            <div className={classnames("delete--wrapper", isDelPageVis ? "popup-slide-enter" : "popup-slide-leave")} onTransitionEnd={this.handleTransition}>
-              <div className="delete__resume">删除简历</div>
-              <div className="delete__cancel" onClick={this.handleCancel}>取消</div>
-            </div>
           </div>
         </div>
 
