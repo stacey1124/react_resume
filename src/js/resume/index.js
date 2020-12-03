@@ -1,8 +1,21 @@
 import React, { Fragment } from 'react';
-import { Button, Modal } from "antd";
-import BottomModal from './bottom-modal'
-import Popup from '../common/popup'
-import Gen from './srs.gen';
+
+import {
+  Player,
+  ControlBar,
+  PlayToggle,
+  ReplayControl,
+  ForwardControl,
+  CurrentTimeDisplay,
+  TimeDivider,
+  PlaybackRateMenuButton,
+  VolumeMenuButton,
+  BigPlayButton 
+} from 'video-react';
+
+import BottomModal from '../common/bottom-modal'
+import DelResume from './delete-resume'
+import DetailResume from './detail-resume'
 import { Router, Route, hashHistory } from 'react-router';
 
 import classnames from 'classnames';
@@ -10,14 +23,16 @@ import classnames from 'classnames';
 import '../../css/bottom-modal.css'
 import '../../css/resume.css'
 import 'antd/dist/antd.css';
+import img1 from '../../img/firstPic.PNG'
+import img2 from '../../img/movie.ogv'
 export default class Resume extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
-      isDelPageVis: false,
-      isDetailPageVis: false,
-      height: 0
+      isVis: false,
+      height: 0,
+      modalName: ''
     }
   }
   componentDidMount() {
@@ -29,38 +44,47 @@ export default class Resume extends React.Component {
     })
   }
 
-  handleClick = () => {
-    fetch("/api/position/detail?format=json&brand=28&id=113")
-    .then(res => res.json())
-    .then(data => {
-      console.log("data:",data);
-    })
-  }
-
-  showDeletePage = (e) => {
+  // handleClick = () => {
+  //   fetch("/api/position/detail?format=json&brand=28&id=113")
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log("data:",data);
+  //   })
+  // }
+  
+  showModal = () => {
+    //modalPage1
     //点击时出现浮层Modal
     this.setState({
-      isDelPageVis: true
+      visible: true,
+      modalName: 'modalPage1'
     })
   }
-
-  deletePageVisible = (visible) => {
+  
+  showModalDetail = () => {
+    //modalPage2
+    //点击时出现浮层Modal
     this.setState({
-      isDelPageVis: visible,
+      visible: true,
+      modalName: 'modalPage2'
     })
   }
 
-  handleTransition = () => {
-    console.log(333)
-  }
 
-  handleClick = (e) => {
-
+  closeModal = () => {
+    this.setState({
+      visible: false
+    })
   }
 
   render () {
-    const { isDelPageVis, height } = this.state;
-
+    const { visible, delTitle, modalName } = this.state;
+    let modalContent;
+    if (modalName && modalName == 'modalPage1') {
+      modalContent = <DelResume></DelResume>
+    } else {
+      modalContent = "内容2"
+    }
     return (
       <Fragment>
       <div className="myresume">
@@ -68,7 +92,7 @@ export default class Resume extends React.Component {
           <li className="myresume-item">
             我的简历20201101
             <div className="delete--wrapper">
-              <div id="js-resume-delete" className="resume-delete" onClick={this.showDeletePage}>
+              <div id="js-resume-delete" className="resume-delete" onClick={this.showModal}>
                 <i className="icon-delete"></i>
               </div>
             </div>
@@ -76,25 +100,42 @@ export default class Resume extends React.Component {
           <li className="myresume-item">
             我的简历20201130
             <div className="delete--wrapper">
-              <div id="js-resume-delete" className="resume-delete" onClick={this.showDatailPage}>
+              <div id="js-resume-delete" className="resume-delete" onClick={this.showModalDetail}>
                 <i className="icon-delete"></i>
               </div>
             </div>
           </li>
         </ul>
-        
-        <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
       </div>
-      <BottomModal isPageShow={this.deletePageVisible} isDelPageVis={isDelPageVis} height={height}></BottomModal>
+
+      <video controls="controls" autoPlay="autoplay">
+        <source src={img2}></source>
+      </video>
+      <img src={img1}></img>
+
+      <Player poster={img1} src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4" >
+      {/* <source src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4" />
+      <source src="http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4" /> */}
+      <BigPlayButton position="right"/>
+      <PlayToggle />
+      <ControlBar>
+        <ReplayControl seconds={10} order={1.1} />
+        <ForwardControl seconds={30} order={1.2} />
+        <CurrentTimeDisplay order={4.1} />
+        <TimeDivider order={4.2} />
+        <PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} order={7.1} />
+        <VolumeMenuButton disabled />
+      </ControlBar>
+    </Player>
+
+      <BottomModal
+        onClose={this.closeModal} 
+        visible={visible} 
+      >
+        {/* 内容可以从其他组件传递过来 */}
+        {modalContent}
+      </BottomModal>
+
       </Fragment>
     )
   }

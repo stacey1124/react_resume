@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-
 import classnames from 'classnames';
 import '../../css/bottom-modal.css'
 
@@ -11,31 +10,24 @@ export default class BottomModal extends React.Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-  
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.isDelPageVis != this.props.isDelPageVis && this.props.isDelPageVis) {
+    if(prevProps.visible != this.props.visible && this.props.visible) {
       this.setState({
-        vis: this.props.isDelPageVis
+        vis: this.props.visible
       })
     }
   }
 
-
-  handleCancel = () => {
-    const visible = false;
-    // const height = 130;
-    this.props.isPageShow({visible});
+  closeModal = () => {
+    const { onClose } = this.props
+    onClose && onClose()
   }
 
   handleAnimationEnd = (e) => {
     //animation结束之后再设置display: none
     // 需要判断leave动画结束
     console.log("动画结束后")
-
-    if (!this.props.isDelPageVis) {
+    if (!this.props.visible) {
       this.setState({
         vis: false
       })
@@ -44,16 +36,19 @@ export default class BottomModal extends React.Component {
 
   render() { 
     const { vis } = this.state;
-    const { isDelPageVis, children } = this.props
-    console.log("children:", children)
+    const { visible, headerTitle, children } = this.props
+    console.log("vis:", vis)
     return (
       <Fragment>
         <div className="modal-component" style={{display: vis ? "block" : "none"}}>
-          <div className={classnames("popup-mask", isDelPageVis ? "popup-fade-enter" : "popup-fade-leave")} 
+          <div className={classnames("popup-mask", visible ? "popup-fade-enter" : "popup-fade-leave")} 
+            onClick={this.closeModal}
             onAnimationEnd={this.handleAnimationEnd}
           >
           </div>
-          <div className="popup-container">
+          <div className={classnames("popup-container", visible ? "popup-slide-enter" : "popup-slide-leave")}> 
+            <div className="popup-header">{children}</div>
+            <div className="popup-body" onClick={this.closeModal}>取消</div>
           </div>
         </div>
 

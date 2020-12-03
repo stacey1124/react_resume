@@ -57,18 +57,17 @@
   }
 }
 
-
-.popup-container .delete--wrapper {
+.popup-container {
   width: 100%;
-  font-size: 17px;
   background-color: #fff;
   position: absolute;
   bottom: 0;
+  font-size: 17px;
   border-radius: 20px 20px 0px 0px;
   transition: transform 200ms ease 100ms; 
 }
 
-.popup-container .delete__resume {
+.popup-container .popup-header {
   color: red;
   line-height: 60px;
   height: 60px;
@@ -76,7 +75,7 @@
   border-bottom: solid 10px #eee;
 }
 
-.popup-container .delete__cancel {
+.popup-container .popup-body {
   opacity: 1;
   color: #000;
   line-height: 60px;
