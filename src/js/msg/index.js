@@ -1,11 +1,10 @@
 import React from 'react'
-export default class Nav extends React.Component {
+export default class Msg extends React.Component {
   render() {
     return (
       <div className="test">
-        nav页面
+        嵌套页面
       </div>
     )
   }
 }
-

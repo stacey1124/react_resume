@@ -16,11 +16,13 @@ import './App.css';
 // export default App;
 export default class App extends Component {
   render() {
+    console.log("props", this.props.children);
     return (
       <div className="App">
-        首页
+        <Link to="/">首页</Link>
         <Link to="resume">简历页</Link>
         <Link to="nav">测试页</Link>
+        <Link to="nav/message/2">嵌套</Link>
         {this.props.children}
       </div>
     );
