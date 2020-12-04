@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Router } from 'react-router'
 
 import {
   Player,
@@ -16,7 +17,6 @@ import {
 import BottomModal from '../common/bottom-modal'
 import DelResume from './delete-resume'
 import DetailResume from './detail-resume'
-import { Router, Route, hashHistory } from 'react-router';
 
 import classnames from 'classnames';
 
