@@ -48,8 +48,47 @@ const routeConfig = [
         ]
       }
     ]
-
   }
+  // const routeConfig = 
+  // [{ path: '/',
+  //   component: require('./App'),
+
+  //   getIndexRoute(nextState, callback) {
+  //     require.ensure([], (require) => {
+  //       callback(null, {
+  //         component: require('./js/dashBoard/index')
+  //       })
+  //     })
+  //   },
+
+  //   childRoutes: [
+  //     {
+  //       path: 'resume',
+  //       component: require('./js/resume'),
+  //     },
+  //     {
+  //       path: 'nav',
+  //       component: require('./js/Nav'),
+  //       childRoutes: [
+
+  //       ]
+
+  //     }
+  //   ],
+    // childRoutes: [
+    //   { path: 'resume', component: Resume },
+    //   { path: 'nav', 
+    //     component: Nav,
+    //     childRoutes: [
+    //       { path: 'message/:id', component: Msg },
+    //       { path: 'message/:id', 
+    //         onEnter: function (nextState,replaceState) {
+    //           replaceState(null, '/message/' + nextState.params.id)
+    //         }
+    //       }
+    //     ]
+    //   }
+    // ]
 ]
 
 ReactDOM.render((
