@@ -13,9 +13,16 @@ export default class DelResumeDetail extends React.Component {
     console.log('删除弹框')
   }
 
+
   render() {
     return (
-      <div className="delete-resume" onClick={this.delReasume}>删除简历1</div>
+      <div 
+        className="delete-resume" 
+        onClick={this.delReasume} 
+
+      >
+        删除简历1
+      </div>
     )
   }
 

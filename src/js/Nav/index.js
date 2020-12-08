@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
-// import Form from './Form'
+
 import { 
   Form, 
   Input, 
   Select, 
   Switch,
   Tabs,
-  Button
+  Button,
+  Menu,
+  Dropdown,
+  Radio
 } from 'antd'
+
+const { SubMenu } = Menu; 
 
 class FormDialog extends Component {
   constructor(props){
@@ -15,6 +20,10 @@ class FormDialog extends Component {
     this.state = {
       rank_info: 10
     }
+  }
+
+  onChange = (checked) => {
+    console.log(`switch to ${checked}`);
   }
 
   render() {
@@ -77,7 +86,7 @@ class FormDialog extends Component {
             )}
           </FormItem>
           <FormItem>
-            <Switch></Switch>
+            <Switch onChange={this.onChange}></Switch>
           </FormItem>
           {/* <FormItem>
             <Tabs>
@@ -97,6 +106,35 @@ class FormDialog extends Component {
             }}
           >提交</Button>
         </Form>
+
+        <div className="drop-parent">
+          父节点
+        </div>
+
+        <Dropdown 
+          getPopupContainer={() => {
+            return document.querySelector(".drop-parent")
+          }}
+          overlay={
+            <Menu>
+              <Menu.Item>
+                <a target="_blank" href="www.baidu.com"> 1st menu item </a>
+              </Menu.Item>
+              <Menu.Item>
+                <a target="_blank" href="www.baidu.com"> 2st menu item </a>
+              </Menu.Item>
+            </Menu>
+          }
+        >
+          <a >Hover me</a>
+        </Dropdown>
+
+        {/* RadioGroup */}
+          <Radio.Group defaultValue="1" buttonStyle="solid">
+            <Radio.Button value="1">test1</Radio.Button>
+            <Radio.Button value="2">test2</Radio.Button>
+            <Radio.Button value="3">test3</Radio.Button>
+          </Radio.Group>
       </div>
     )
   }

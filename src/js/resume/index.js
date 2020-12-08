@@ -34,6 +34,9 @@ export default class Resume extends React.Component {
       height: 0,
       modalName: ''
     }
+    this.timeOutEvent = 0;
+    this.startTime = 0;
+    this.endTime = 0;
   }
   componentDidMount() {
 
@@ -55,15 +58,15 @@ export default class Resume extends React.Component {
   showModal = () => {
     //modalPage1
     //点击时出现浮层Modal
-    this.setState({
-      visible: true,
-      modalName: 'modalPage1'
-    })
+    // this.setState({
+    //   visible: true,
+    //   modalName: 'modalPage1'
+    // })
   }
   
   showModalDetail = () => {
     //modalPage2
-    //点击时出现浮层Modal
+    // 点击时出现浮层Modal
     this.setState({
       visible: true,
       modalName: 'modalPage2'
@@ -75,6 +78,30 @@ export default class Resume extends React.Component {
     this.setState({
       visible: false
     })
+  }
+  
+  //长按事件
+  handleTouchStart = (e) => {
+    this.startTime = +new Date();
+    this.timeOutEvent = setTimeout(function() {
+      
+    }, 700)
+    e.preventDefault();
+  }
+
+  handleTouchEnd = () => {
+    this.endTime = +new Date();
+    clearTimeout(this.timeOutEvent)
+    if( this.endTime - this.startTime < 700 ) {
+      console.log("点击事件");
+    } else {
+      console.log("长按事件");
+      //否则是长按事件-显示弹窗
+      this.setState({
+        visible: true,
+        modalName: 'modalPage2'
+      })
+    }
   }
 
   render () {
@@ -92,7 +119,14 @@ export default class Resume extends React.Component {
           <li className="myresume-item">
             我的简历20201101
             <div className="delete--wrapper">
-              <div id="js-resume-delete" className="resume-delete" onClick={this.showModal}>
+              <div 
+                id="js-resume-delete" 
+                className="resume-delete" 
+                onClick={this.showModal}
+                onTouchStart={this.handleTouchStart}
+                onTouchMove={this.handleTouchMove}
+                onTouchEnd={this.handleTouchEnd}
+              >
                 <i className="icon-delete"></i>
               </div>
             </div>
