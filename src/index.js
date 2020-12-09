@@ -5,12 +5,12 @@ import Resume from './js/resume'
 import Nav from './js/Nav'
 import Dashboard from './js/dashBoard'
 import Msg from './js/msg'
+import VideoView from './js/Nav/Video'
 import App from './App';
 
 import './index.css';
 
-
-
+// // 方式1：
 // ReactDOM.render(
 //   (
 //   <Router history={browserHistory}>
@@ -19,7 +19,7 @@ import './index.css';
 //       <IndexRoute component={Dashboard}/>
 //       <Route path="resume" component={Resume} />
 //       <Route path="nav" component={Nav} >
-//         <Route path="/message/:id" component={Msg} />
+//         <Route path="/message/:id" component={VideoView} />
 //         {/* 跳转/nav/message/:id 到 /message/:id */}
 //         <Redirect from="message/:id" to="/message/:id" />
 //       </Route>
@@ -29,66 +29,28 @@ import './index.css';
 //   document.getElementById('root')
 // );
 
-//jsx方式路由配置
+//方式2：jsx方式路由配置
 const routeConfig = [
   { path: '/',
     component: App,
-    IndexRoute: { component: Dashboard },
+    indexRoute: { component: Dashboard }, 
     childRoutes: [
       { path: 'resume', component: Resume },
       { path: 'nav', 
         component: Nav,
         childRoutes: [
-          { path: 'message/:id', component: Msg },
+          { path: '/message/:id', component: VideoView },
           { path: 'message/:id', 
-            onEnter: function (nextState,replaceState) {
-              replaceState(null, '/message/' + nextState.params.id)
-            }
+            // onEnter: function (nextState, replaceState) {//进入路由时
+            //   replaceState(null, '/message/' + nextState.params.id)
+            // }
+            // 当url为/nav/message/2 时跳转到  /message/2
+            onEnter: ({ params }, replace) => replace(`/message/${params.id}`)
           }
         ]
       }
     ]
   }
-  // const routeConfig = 
-  // [{ path: '/',
-  //   component: require('./App'),
-
-  //   getIndexRoute(nextState, callback) {
-  //     require.ensure([], (require) => {
-  //       callback(null, {
-  //         component: require('./js/dashBoard/index')
-  //       })
-  //     })
-  //   },
-
-  //   childRoutes: [
-  //     {
-  //       path: 'resume',
-  //       component: require('./js/resume'),
-  //     },
-  //     {
-  //       path: 'nav',
-  //       component: require('./js/Nav'),
-  //       childRoutes: [
-
-  //       ]
-
-  //     }
-  //   ],
-    // childRoutes: [
-    //   { path: 'resume', component: Resume },
-    //   { path: 'nav', 
-    //     component: Nav,
-    //     childRoutes: [
-    //       { path: 'message/:id', component: Msg },
-    //       { path: 'message/:id', 
-    //         onEnter: function (nextState,replaceState) {
-    //           replaceState(null, '/message/' + nextState.params.id)
-    //         }
-    //       }
-    //     ]
-    //   }
-    // ]
 ]
 
 ReactDOM.render((

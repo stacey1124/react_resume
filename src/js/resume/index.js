@@ -23,7 +23,7 @@ import classnames from 'classnames';
 import '../../css/bottom-modal.css'
 import '../../css/resume.css'
 import 'antd/dist/antd.css';
-import img1 from '../../img/firstPic.PNG'
+import img1 from '../../img/player.png'
 import img2 from '../../img/movie.ogv'
 export default class Resume extends React.Component {
   constructor(props) {
@@ -94,6 +94,7 @@ export default class Resume extends React.Component {
     clearTimeout(this.timeOutEvent)
     if( this.endTime - this.startTime < 700 ) {
       console.log("点击事件");
+      //处理点击事件
     } else {
       console.log("长按事件");
       //否则是长按事件-显示弹窗
@@ -107,6 +108,8 @@ export default class Resume extends React.Component {
   render () {
     const { visible, delTitle, modalName } = this.state;
     let modalContent;
+
+
     if (modalName && modalName == 'modalPage1') {
       modalContent = <DelResume></DelResume>
     } else {
@@ -140,6 +143,9 @@ export default class Resume extends React.Component {
             </div>
           </li>
         </ul>
+      </div>
+      <div className="text" style={{border: "1px solid #ccc",width: "200px", height: "200px", background: "green"}}>
+
       </div>
 
       <video controls="controls" autoPlay="autoplay">

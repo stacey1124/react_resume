@@ -27,6 +27,7 @@ class FormDialog extends Component {
   }
 
   render() {
+    console.log(`this.props.children:${this.props.children}`);
     const { form } = this.props
     const { getFieldDecorator, getFieldValue, resetFields } = form
     const { rank_info } = this.state
@@ -129,12 +130,13 @@ class FormDialog extends Component {
           <a >Hover me</a>
         </Dropdown>
 
-        {/* RadioGroup */}
           <Radio.Group defaultValue="1" buttonStyle="solid">
             <Radio.Button value="1">test1</Radio.Button>
             <Radio.Button value="2">test2</Radio.Button>
             <Radio.Button value="3">test3</Radio.Button>
           </Radio.Group>
+
+          {this.props.children}
       </div>
     )
   }

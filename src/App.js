@@ -20,9 +20,9 @@ export default class App extends Component {
     return (
       <div className="App">
         <Link to="/">首页</Link>
-        <Link to="resume">简历页</Link>
-        <Link to="nav">测试页</Link>
-        <Link to="nav/message/2">嵌套</Link>
+        <Link to="/resume">简历</Link>
+        <Link to="/nav">antd组件</Link>
+        <Link to="/nav/message/2">视频</Link>
         {this.props.children}
       </div>
     );
