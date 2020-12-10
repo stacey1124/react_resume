@@ -105,7 +105,13 @@ export default class Resume extends React.Component {
     }
   }
 
+
+  handleArrow = (param) => {
+    console.log(param)
+  }
+
   render () {
+    const arrowParam = "箭头函数传参_merge";
     const { visible, delTitle, modalName } = this.state;
     let modalContent;
 
@@ -144,7 +150,13 @@ export default class Resume extends React.Component {
           </li>
         </ul>
       </div>
-      <div className="text" style={{border: "1px solid #ccc",width: "200px", height: "200px", background: "green"}}>
+      <div 
+        className="text" 
+        style={{border: "1px solid #ccc",width: "200px", height: "200px", background: "green"}}
+        onClick={() => 
+          this.handleArrow(arrowParam)
+        }
+        >
 
       </div>
 
