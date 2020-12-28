@@ -7,6 +7,7 @@ import Dashboard from './js/dashBoard'
 import Msg from './js/msg'
 import VideoView from './js/Nav/Video'
 import App from './App';
+import React16 from './js/React16'
 
 import './index.css';
 
@@ -48,7 +49,8 @@ const routeConfig = [
             onEnter: ({ params }, replace) => replace(`/message/${params.id}`)
           }
         ]
-      }
+      },
+      { path: 'react16', component: React16 }
     ]
   }
 ]

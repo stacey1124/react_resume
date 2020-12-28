@@ -23,6 +23,7 @@ export default class App extends Component {
         <Link to="/resume">简历</Link>
         <Link to="/nav">antd组件</Link>
         <Link to="/nav/message/2">视频</Link>
+        <Link to="/react16">react16</Link>
         {this.props.children}
       </div>
     );
