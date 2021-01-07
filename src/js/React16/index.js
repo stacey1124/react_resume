@@ -24,7 +24,12 @@ export default class React16 extends React.Component {
       activePanel: panel
     })
   }
+  handleChange = (val) => {
+    console.log("val::: ", val);
+  }
+  // static contextType = Context
   render() {
+    console.log("2222::: ", 2222);
     const __html = 'First Second'
     const { increment } =this.state;
     const initialCount = 1
@@ -38,13 +43,10 @@ export default class React16 extends React.Component {
     const { activePanel } = this.state
     return (
       <Fragment>
-        {/* <Test increment={increment} /> */}
         <Counter initialCount={initialCount}/>
         <Temperature />
-        {/* <div dangerouslySetInnerHTML={{__html}}></div> */}
         <div ref={this.input}>123</div>
         <HookTest />
-        
         <Popover 
           title="详细信息"
           content={content}
@@ -52,7 +54,6 @@ export default class React16 extends React.Component {
           <Button>点击弹出</Button>
           <a>点击跳转</a>
         </Popover>
-
         <Button
           onClick={() => {this.dialog.show()}}
         >点击弹框Modal</Button>
@@ -61,19 +62,14 @@ export default class React16 extends React.Component {
           ref={(e) => {
             this.dialog = e
           }}
-          // visible={true}
         >
-
         </Dialog>
-
         <Wrapper
           onPanelChange={this.onPanelChange}
           activePanel={activePanel}
-          // tabs={[]}
+          handleChange={this.handleChange}
         >
         </Wrapper>
-
-
       </Fragment>
     )
   }

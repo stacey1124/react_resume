@@ -3,6 +3,10 @@ import { find } from 'lodash'
 import Email from './Email'
 import Address from './Address'
 import Remarks from './Remarks'
+import UploadResume from './UploadResume'
+import DropSelect from './DropSelect'
+import Context from './Context'
+
 import { Menu } from 'antd'
 
 const MenuItem = Menu.Item
@@ -21,18 +25,31 @@ const Tabs = [
     "text": "备注",
     "tab": "remarks",
     "component": Remarks
+  },
+  {
+    "text": "上传简历",
+    "tab": "uploadResume",
+    "component": UploadResume
+  },
+  {
+    "text": "选择下拉框",
+    "tab": "select",
+    "component": DropSelect
+  },
+  {
+    "text": "Provider-Consumer",
+    "tab": "context",
+    "component": Context
   }
 ]
 
-const renderContent = (activePanel, tabs, props) => {
-  console.log("props::: ", props);
-  console.log("activePanel:", activePanel)
+const renderContent = (activePanel, tabs, props, handleChange) => {
   let activeTab = find(tabs, {tab: activePanel})
-  console.log("activeTab", activeTab)
   let WrapperComponent = activeTab.component
   return(
     <WrapperComponent
       panelName={activeTab.tab}
+      handleChange={handleChange}
     >
 
     </WrapperComponent>
@@ -56,7 +73,8 @@ export default class Wrapper extends React.Component {
       onPanelChange, 
       activePanel, 
       tabs, 
-      render 
+      render,
+      handleChange 
     } = props
     console.log("tabs:", tabs)
     return (
@@ -74,7 +92,7 @@ export default class Wrapper extends React.Component {
             )
           })}          
         </Menu>
-        {render(activePanel, tabs, props)}
+        {render(activePanel, tabs, props, handleChange)}
       </Fragment>
     )
   }
