@@ -51,10 +51,14 @@ export default class UploadDialog extends Component {
       <div>
         <ButtonGroup>
           {
-            btnMap.map((item) => {
+            btnMap.map((item, index) => {
+              console.log("index::: ", index);
+              console.log("selected::: ", selected);
+              console.log("...selected::: ", {...selected});
               return (
                 <Button 
                   className={`form-btn-${item.type}`}
+                  { ...selected === index + 1 ? {type: 'primary'} : ''}
                   onClick={() =>{
                     console.log("item.value:", item.value)
                     this.setState({

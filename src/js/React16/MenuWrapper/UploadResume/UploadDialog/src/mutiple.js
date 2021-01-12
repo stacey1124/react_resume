@@ -1,10 +1,16 @@
 import React, { Component, Fragment } from 'react'
+import PositionPickSelect from './PositionPickSelect'
+
 
 export default class MutipleForm extends Component {
   render() {
     return (
       <Fragment>
-        <div>mutiple内容</div> 
+        <PositionPickSelect
+          type={'aaa'}
+        >
+
+        </PositionPickSelect>
       </Fragment>
       
     )
