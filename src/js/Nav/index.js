@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import { 
   Form, 
@@ -9,135 +9,164 @@ import {
   Button,
   Menu,
   Dropdown,
-  Radio
-} from 'antd'
+  Radio,
+  Modal,
+  AutoComplete,
+  Checkbox
+} from 'antd';
+
+import { FileOutlined, FileAddOutlined } from '@ant-design/icons';
 
 const { SubMenu } = Menu; 
-
+//多选
+const CheckboxGroup = Checkbox.Group;
+const plainOptions = ["blue", "green", "orange"];
+const checkList = ["blue", "green", "yellow"]
 class FormDialog extends Component {
   constructor(props){
     super(props)
     this.state = {
-      rank_info: 10
+      // rank_info: 10
+      isModalVisible: false,
+      isModalVisible_add: false
     }
   }
 
-  onChange = (checked) => {
-    console.log(`switch to ${checked}`);
+  // onChange = (checked) => {
+  //   console.log(`switch to ${checked}`);
+  // }
+
+  showModal = () => {
+    this.setState({
+      isModalVisible: true
+    })
   }
 
+  
+  handleOk = () => {
+    this.setState({
+      isModalVisible: false
+    })
+  }
+  
+  handleOk_add = () => {
+    this.setState({
+      isModalVisible_add: false
+    })
+  }
+
+  handleCancel = () => {
+    this.setState({
+      isModalVisible: false
+    })
+  }
+
+  handleCancel_add = () => {
+    this.setState({
+      isModalVisible_add: false
+    })
+  }
+
+  addFile = () => {
+    // console.log("22");
+    //弹窗
+    this.setState({
+      isModalVisible_add: true
+    })
+  }
+
+  onCheckAllChange = (values) => {
+    console.log(values)
+  }
+
+  onChange = () => {
+    
+  }
+  
   render() {
-    console.log(`this.props.children:${this.props.children}`);
-    const { form } = this.props
-    const { getFieldDecorator, getFieldValue, resetFields } = form
-    const { rank_info } = this.state
-    const FormItem = Form.Item,
-    Option = Select.Option,
-    TabPane = Tabs.TabPane;
+    // console.log(`this.props.children:${this.props.children}`);
+    // const { form } = this.props
+    // const { getFieldDecorator, getFieldValue, resetFields } = form
+    // const { rank_info } = this.state
+    // const FormItem = Form.Item,
+    // Option = Select.Option,
+    // TabPane = Tabs.TabPane;
 
     // getFieldValue
+    const { Search } = Input;
+    const { Option } = Select;
+    const archives = [
+      "文件1",
+      "文件2"
+    ]
+    let {
+      isModalVisible,
+      isModalVisible_add
+    } = this.state;
     return (
-      <div className="form-test">
-        <Form>
-          <FormItem className="username">
-            {getFieldDecorator('username', {
-              initialValues: "",
-              rules: [
-                {
-                  required: true,
-                  message: "请输入用户名"
-                },
-                {
-                  type: "email",
-                  message: "用户名格式必须为邮箱"
-                }
-              ]
-            })(
-              <Input 
-                type="text"
-                placeholder="请输入用户名"
-                // onChange={e => {
-                //   e.target.value
-                // }}
-              />
-            )}
-          </FormItem>
-          <FormItem className="rank-level">
-            {getFieldDecorator('rank_info', {
-              initialValue: rank_info,
-              rules: [{
-                required: true,
-                message: "等级信息为必填"
-              }]
-            })(
-              <Select
-                placeholder="请选择等级信息"
-                className="rank_info_select"
-                onChange={(val) => {
-                  this.setState({
-                    rank_info: val
-                  })
+      <Fragment>
+        <div>
+          <Button type="primary" onClick={this.showModal}>
+          Open Modal
+          </Button>
+          <Modal
+            title="复制到"
+            visible={isModalVisible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+          >
+            <span>
+              <Search placeholder="请输入文件名" loading />
+            </span>
+            <span style={{"cursor": "pointer"}} onClick={this.addFile}>
+              <FileAddOutlined 
+                style={{
+                  fontSize: 16,
+                  color: '#1890ff'
                 }}
+              />
+              新建文件
+
+            </span>
+            
+            <p><FileOutlined />文件1...</p>
+            <p><FileOutlined />文件2...</p>
+            <p><FileOutlined />文件3...</p>
+          </Modal>
+
+          <Modal
+                title="新建文件"
+                visible={isModalVisible_add}
+                onOk={this.handleOk_add}
+                onCancel={this.handleCancel_add} 
               >
-                <Option value={10}>10</Option>
-                <Option value={20}>20</Option>
-                <Option value={30}>30</Option>
-                <Option value={40}>40</Option>
-              </Select>
-            )}
-          </FormItem>
-          <FormItem>
-            <Switch onChange={this.onChange}></Switch>
-          </FormItem>
-          {/* <FormItem>
-            <Tabs>
-              <TabPane>1</TabPane>
-              <TabPane>2</TabPane>
-            </Tabs>
-          </FormItem> */}
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              form.validateFieldsAndScroll((errs, values) => {
-                console.log(errs, values);
-                console.log(getFieldValue("rank_info"));
-                // setFieldValue()
-                
-              })
-            }}
-          >提交</Button>
-        </Form>
-
-        <div className="drop-parent">
-          父节点
+                <label>文件名</label>
+                <Input></Input>
+                <label>选择文件</label>
+                <Input.Group compact>
+                  {/* <Select defaultValue="Sign Up" style={{ width: '30%' }}>
+                    <Option value="Sign Up">Sign Up</Option>
+                    <Option value="Sign In">Sign In</Option>
+                  </Select> */}
+                  <AutoComplete
+                    style={{ width: '70%' }}
+                    placeholder="Email"
+                    options={[{ value: 'text 1' }, { value: 'text 2' }]}
+                  />
+                </Input.Group>
+              </Modal>
         </div>
-
-        <Dropdown 
-          getPopupContainer={() => {
-            return document.querySelector(".drop-parent")
-          }}
-          overlay={
-            <Menu>
-              <Menu.Item>
-                <a target="_blank" href="www.baidu.com"> 1st menu item </a>
-              </Menu.Item>
-              <Menu.Item>
-                <a target="_blank" href="www.baidu.com"> 2st menu item </a>
-              </Menu.Item>
-            </Menu>
-          }
+                      
+        {/* 多选 */}
+        <Checkbox
+          onChange={this.onCheckAllChange}
         >
-          <a >Hover me</a>
-        </Dropdown>
+          全选
+        </Checkbox>
+        <CheckboxGroup options={plainOptions} value={checkList} onChange={this.onChange}>
 
-          <Radio.Group defaultValue="1" buttonStyle="solid">
-            <Radio.Button value="1">test1</Radio.Button>
-            <Radio.Button value="2">test2</Radio.Button>
-            <Radio.Button value="3">test3</Radio.Button>
-          </Radio.Group>
-
-          {this.props.children}
-      </div>
+        </CheckboxGroup>
+      </Fragment>
     )
   }
 }

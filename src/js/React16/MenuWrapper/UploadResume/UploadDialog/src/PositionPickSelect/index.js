@@ -16,10 +16,35 @@ const selectData = [
 ]
 export default class PositionPickSelect extends Component {
 
+  onSearch = (val) => {
+    console.log("search-value", val)
+  }
+  handleChange = (val) => {
+    console.log('val::', val);
+    this.props.selectChange(val)
+  }
   render() {
     console.log("this.props:", this.props)
     return(
-      <Select>
+      <Select
+        showSearch
+        placeholder="请输入职位"
+        style={{width: '100%'}}
+        dropdownStyle={{width: '100%'}}
+        filterOption={(input, option) => {
+          return option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        }}
+        // filterOption={(input, option) => 
+        //   option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        // }
+        onSearch={this.onSearch}
+        onChange={this.handleChange}
+      >
+        {this.props.dataList.map(item => {
+          return(
+            <Option key={item} value={item}>{item}</Option>
+          )
+        })}
       </Select>
     )
   }
@@ -37,5 +62,6 @@ PositionPickSelect.defaultProps = {
       }
     }
     return fetchOptions
-  }
+  },
+  dataList: selectData
 }

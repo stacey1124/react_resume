@@ -26,12 +26,10 @@ const Map = {
 }
 // class MutipleForm extends Component {
 //   return (
-
 //   )
 
 // }
 // class SingleForm extends Component {
-
 // }
 // @LazyDialog
 export default class UploadDialog extends Component {
