@@ -1,10 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import PositionPickSelect from './PositionPickSelect'
 import MutipleUpload from './MutipleUpload'
-import { Popover, Input, Form, Button } from 'antd'
+import Avatar from './AvatarUpload'
+import { Popover, 
+         Input, 
+         Form, 
+         Button,
+        } from 'antd'
 
 const FormItem = Form.Item
-class MutipleForm extends Component {
+export default class MutipleForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -33,7 +38,6 @@ class MutipleForm extends Component {
   }
   render() {
     const { positionVal } = this.state 
-    const { getFieldDecorator } = this.props.form
     return (
       <Fragment>
         <Form
@@ -41,36 +45,48 @@ class MutipleForm extends Component {
         >
           {/* 1、搜索下拉框 */}
           <FormItem
-          > 
-          {/* 使用getFieldDecorator之前必须用Form.create(Form)将表单组件包裹起来 */}
-            {getFieldDecorator("position", {
-              initialValue: positionVal,
-              rules: [{
+            name="position"
+            rules={[
+              {
                 required: true,
                 message: "请输入职位名称"
-              }]
-            })(
-              <PositionPickSelect
-                selectChange={this.handleChange}
-              >
-              </PositionPickSelect>
-            )}
+              }
+            ]}
+          > 
+            <PositionPickSelect
+              selectChange={this.handleChange}
+            >
+            </PositionPickSelect>
           </FormItem>
           {/* 2、多个上传文件 */}
-          <FormItem>
-            {getFieldDecorator("file", {
-              initialValues: "123",
-              rules: [{
+          <FormItem
+            name="file"
+            rules={[
+              {
                 required: true,
                 message: "请上传简历文件"
-              }]
-            })(
-              <MutipleUpload
-                fileUploadChange={this.handleUploadChange}
-              >
-
-              </MutipleUpload>
-            )}
+              }
+          ]}
+          >
+            <MutipleUpload
+              fileUploadChange={this.handleUploadChange}
+            >
+            </MutipleUpload>
+          </FormItem>
+          {/* 头像裁剪上传 */}
+          <FormItem
+            name="avator"
+            rules={[
+              {
+                require: true,
+                message: "请上传头像"
+              }
+            ]}
+          >
+            <Avatar></Avatar>
+          </FormItem>
+          {/* 文件裁剪插件cropperjs */}
+          <FormItem>
 
           </FormItem>
           <FormItem>
@@ -87,4 +103,3 @@ class MutipleForm extends Component {
     )
   }
 }
-export default MutipleForm = Form.create({})(MutipleForm)

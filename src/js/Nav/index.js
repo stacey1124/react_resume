@@ -22,7 +22,7 @@ const { SubMenu } = Menu;
 const CheckboxGroup = Checkbox.Group;
 const plainOptions = ["blue", "green", "orange"];
 const checkList = ["blue", "green", "yellow"]
-class FormDialog extends Component {
+export default class FormDialog extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -171,5 +171,5 @@ class FormDialog extends Component {
   }
 }
 
-export default FormDialog = Form.create({})(FormDialog);
+// export default FormDialog = Form.create({})(FormDialog);
 
