@@ -23,8 +23,8 @@ import classnames from 'classnames';
 import '../../css/bottom-modal.css'
 import '../../css/resume.css'
 import 'antd/dist/antd.css';
-import img1 from '../../img/player.png'
-import img2 from '../../img/movie.ogv'
+// import img1 from '../../img/player.png'
+// import img2 from '../../img/movie.ogv'
 export default class Resume extends React.Component {
   constructor(props) {
     super(props);
