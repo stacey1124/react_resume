@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PositionPickSelect from './PositionPickSelect'
 import MutipleUpload from './MutipleUpload'
+import CropperWrapper from './CropperWrapper'
 import Avatar from './AvatarUpload'
 import { Popover, 
          Input, 
@@ -40,9 +41,7 @@ export default class MutipleForm extends Component {
     const { positionVal } = this.state 
     return (
       <Fragment>
-        <Form
-          onSubmit={this.handleSubmit}
-        >
+        <Form onSubmit={this.handleSubmit} >
           {/* 1、搜索下拉框 */}
           <FormItem
             name="position"
@@ -53,10 +52,7 @@ export default class MutipleForm extends Component {
               }
             ]}
           > 
-            <PositionPickSelect
-              selectChange={this.handleChange}
-            >
-            </PositionPickSelect>
+            <PositionPickSelect selectChange={this.handleChange} />
           </FormItem>
           {/* 2、多个上传文件 */}
           <FormItem
@@ -68,10 +64,7 @@ export default class MutipleForm extends Component {
               }
           ]}
           >
-            <MutipleUpload
-              fileUploadChange={this.handleUploadChange}
-            >
-            </MutipleUpload>
+            <MutipleUpload fileUploadChange={this.handleUploadChange} />
           </FormItem>
           {/* 头像裁剪上传 */}
           <FormItem
@@ -86,18 +79,23 @@ export default class MutipleForm extends Component {
             <Avatar></Avatar>
           </FormItem>
           {/* 文件裁剪插件cropperjs */}
-          <FormItem>
-
+          <FormItem
+            name="cropper"
+            rules={[
+              {
+                require: true,
+                message: "上传裁剪头像"
+              }
+            ]}
+          >
+            <CropperWrapper></CropperWrapper>
           </FormItem>
           <FormItem>
-            <Button
-              htmlType="submit"
-            >
+            <Button htmlType="submit" >
               提交
             </Button>
           </FormItem>
         </Form>
-
       </Fragment>
       
     )

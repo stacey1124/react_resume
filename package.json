@@ -12,7 +12,10 @@
     "antd": "^4.10.2",
     "antd-img-crop": "^3.13.2",
     "cropperjs": "^1.5.9",
+    "fetch-mock": "^9.11.0",
     "http-proxy-middleware": "^1.0.6",
+    "isomorphic-fetch": "^3.0.0",
+    "mockjs": "^1.1.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -39,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "react-cropper": "^2.1.4",
     "react-router": "3.0.5"
   }
 }
