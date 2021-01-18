@@ -11,7 +11,6 @@ export default class UploadResume extends React.Component {
     }
   }
   handleUpload = () => {
-    console.log("git diff内容")
     const { visible } = this.state
     this.setState({
       visible: !visible
