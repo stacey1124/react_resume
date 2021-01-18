@@ -11,6 +11,7 @@ export default class UploadResume extends React.Component {
     }
   }
   handleUpload = () => {
+    console.log("撤销指定的commit之前的代码")
     const { visible } = this.state
     this.setState({
       visible: !visible
