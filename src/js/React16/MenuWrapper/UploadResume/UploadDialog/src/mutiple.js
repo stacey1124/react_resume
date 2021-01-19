@@ -9,6 +9,9 @@ import { Popover,
          Button,
         } from 'antd'
 
+import fetch from 'isomorphic-fetch'
+import { debunce, throttle } from '../../../../../utils/debunceAndThrottle'
+
 const FormItem = Form.Item
 export default class MutipleForm extends Component {
   constructor(props) {
@@ -34,11 +37,35 @@ export default class MutipleForm extends Component {
     })
   }
   handleUploadChange = (val) => {
-    console.log('file_val::', val);
-    
+    console.log('file_val::', val); 
   }
+
+  // 每次输入时，都会触发Select的onChange事件，可以通过防抖和节流的方法减少触发事件的频率
+  // 1、防抖
+  // handleDebunceChange = debunce((val) => {
+  //   // 请求防抖
+  //   fetch('/getSelect1').then(res => {
+  //     res.text()
+  //   }).then(results => {
+  //     results = [{name: "sss"}]
+  //     console.log("results", results)
+  //   })
+  // }, 1000) 
+
+  // 2、节流()
+  handleDebunceChange = throttle((val) => {
+    // 请求防抖
+    fetch('/getSelect1').then(res => {
+      res.text()
+    }).then(results => {
+      results = [{name: "sss"}]
+      console.log("results", results)
+    })
+  }, 1000) 
+
+
   render() {
-    const { positionVal } = this.state 
+    const { positionVal } = this.state     
     return (
       <Fragment>
         <Form onSubmit={this.handleSubmit} >
@@ -53,6 +80,10 @@ export default class MutipleForm extends Component {
             ]}
           > 
             <PositionPickSelect selectChange={this.handleChange} />
+          </FormItem>
+          {/* 输入框的onchange事件的防抖和节流 */}
+          <FormItem>
+            <Input placeholder="onChange事件防抖" onChange={this.handleDebunceChange}/>
           </FormItem>
           {/* 2、多个上传文件 */}
           <FormItem
@@ -90,6 +121,7 @@ export default class MutipleForm extends Component {
           >
             <CropperWrapper></CropperWrapper>
           </FormItem>
+
           <FormItem>
             <Button htmlType="submit" >
               提交

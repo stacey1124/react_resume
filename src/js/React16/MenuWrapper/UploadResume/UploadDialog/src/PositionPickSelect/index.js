@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Select } from 'antd'
+import fetch from 'isomorphic-fetch'
 const { Option } = Select
 const selectData = [
   '2021前端工程师[上海]',
@@ -16,11 +17,21 @@ const selectData = [
 ]
 export default class PositionPickSelect extends Component {
 
+  componentDidMount() {
+    fetch('/getSelect').then(res => {
+      res.text()
+    }).then(results => {
+      results = selectData
+      console.log("results", results)
+    })
+  }
   onSearch = (val) => {
     console.log("search-value", val)
   }
   handleChange = (val) => {
     console.log('val::', val);
+
+
     this.props.selectChange(val)
   }
   render() {
@@ -37,7 +48,7 @@ export default class PositionPickSelect extends Component {
         // filterOption={(input, option) => 
         //   option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
         // }
-        onSearch={this.onSearch}
+        // onSearch={this.onSearch}
         onChange={this.handleChange}
       >
         {this.props.dataList.map(item => {

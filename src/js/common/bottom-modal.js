@@ -55,7 +55,7 @@ export default class BottomModal extends React.Component {
     console.log("滚动区域高度", this.popupRef.scrollHeight)
     let scrollTop = this.popupRef.scrollTop
     this.maxScroll = this.popupRef.scrollHeight
-    this.offsetHeight = this.popupRef.offsetHeight
+    this.clientHeight = this.popupRef.clientHeight
     let distanceY = moveY - this.startY
     if (distanceY > 0 && scrollTop == 0) {
       console.log('向下滚动并且滚动到底部::');
