@@ -8,10 +8,20 @@ export default class BottomModal extends React.Component {
     this.state = {
       vis: false
     }
+    this.container = element => this.popupRef = element;
+  }
+
+  componentDidMount() {
+    console.log("didMounted")
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.visible != this.props.visible && this.props.visible) {
+      console.log("this.popupRef.scrollTop", this.popupRef.scrollTop)
+      this.popupRef.addEventListener("touchstart", function(e){
+        console.log("e.target:", e.target)
+        console.log("e.target", e.touches[0].clientY)
+      }, false)
       this.setState({
         vis: this.props.visible
       })
@@ -33,6 +43,36 @@ export default class BottomModal extends React.Component {
       })
     }
   }
+  handleTouchStart = (e) => {
+    this.startY = e.touches[0].clientY
+    console.log("startY:", e.touches[0].clientY)
+  }
+  handleTouchMove = (e) => {
+    console.log("this.popupRef.scrollTop：：", this.popupRef.scrollTop)
+    let moveY = e.touches[0].clientY
+    console.log('moveY::', moveY);
+    console.log('this.startY::', this.startY);
+    console.log("滚动区域高度", this.popupRef.scrollHeight)
+    let scrollTop = this.popupRef.scrollTop
+    this.maxScroll = this.popupRef.scrollHeight
+    this.offsetHeight = this.popupRef.offsetHeight
+    let distanceY = moveY - this.startY
+    if (distanceY > 0 && scrollTop == 0) {
+      console.log('向下滚动并且滚动到底部::');
+      //阻止默认行为
+      this.popupRef.preventDefault()
+      this.popupRef.stopPropagation()
+    } else if (distanceY < 0 && scrollTop + this.offsetHeight >= this.maxScroll) {
+      console.log('向上滚动，并且滚动到顶部::');
+      //阻止默认行为
+      
+    }
+    
+    
+  }
+  handleTouchEnd = (e) => {
+
+  }
 
   render() { 
     const { vis } = this.state;
@@ -46,8 +86,99 @@ export default class BottomModal extends React.Component {
             onAnimationEnd={this.handleAnimationEnd}
           >
           </div>
-          <div className={classnames("popup-container", visible ? "popup-slide-enter" : "popup-slide-leave")}> 
-            <div className="popup-header">{children}</div>
+          <div className={classnames("popup-container", visible ? "popup-slide-enter" : "popup-slide-leave")}
+            ref={this.container}
+            onTouchStart={this.handleTouchStart}
+            onTouchMove={this.handleTouchMove}
+            onTouchEnd={this.handleTouchEnd}
+          > 
+            <div className="popup-header">
+              {children}
+            </div>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
+            <h1>滚动内容标题</h1>
             <div className="popup-body" onClick={this.closeModal}>取消</div>
           </div>
         </div>

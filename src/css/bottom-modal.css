@@ -59,6 +59,10 @@
 
 .popup-container {
   width: 100%;
+  height: 500px;
+  /* min-height: 500px;
+  max-height: 90%; */
+  overflow: auto; 
   background-color: #fff;
   position: absolute;
   bottom: 0;
