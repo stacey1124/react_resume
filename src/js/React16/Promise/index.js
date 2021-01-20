@@ -1,4 +1,4 @@
-export default class Promise {
+export default class MyPromise {
     // promise使用
     // new Promise((resolve, reject) => {
     //   setTimeout(() => {
@@ -30,7 +30,7 @@ export default class Promise {
   }
 
 }
-Promise.prototype.then = function (onFullfilled, onRejected) {
+MyPromise.prototype.then = function (onFullfilled, onRejected) {
   console.log("this:", this)  
   //如果onFullfilled不是函数的话需要：透传：v => v保证下一个then可以获取到val值 
   onFullfilled = typeof onFullfilled === 'function' ? onFullfilled : v => v

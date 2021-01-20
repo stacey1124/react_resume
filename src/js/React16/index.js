@@ -5,6 +5,7 @@ import HookTest from './Hook'
 import Dialog from './Dialog'
 import Wrapper from './MenuWrapper'
 import MyPromise from './Promise'
+import CallApplyBind from './BindApplyCall'
 import { Button, Popover, Modal, Menu } from 'antd'
 import { isNumber } from 'lodash'
 import { resolveOnChange } from 'antd/lib/input/Input';
@@ -32,14 +33,17 @@ export default class React16 extends React.Component {
   // static contextType = Context
   render() {
     // 调用实现的promise
-    new MyPromise((resolve, reject) => {
-      setTimeout(() => {
-        console.log(111)
-        resolve(1)
-      }, 2000)
-    }).then((val) => {
-      console.log("val::", val)
-    })
+    // new MyPromise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     console.log(111)
+    //     resolve(1)
+    //   }, 2000)
+    // }).then((val) => {
+    //   console.log("val::", val)
+    // })
+    
+    //手动实现call apply bind
+    // new CallApplyBind();
     const __html = 'First Second'
     const { increment } =this.state;
     const initialCount = 1
