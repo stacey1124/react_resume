@@ -4,8 +4,10 @@ import Temperature from './Temperature'
 import HookTest from './Hook'
 import Dialog from './Dialog'
 import Wrapper from './MenuWrapper'
+import MyPromise from './Promise'
 import { Button, Popover, Modal, Menu } from 'antd'
 import { isNumber } from 'lodash'
+import { resolveOnChange } from 'antd/lib/input/Input';
 
 const MenuItem = Menu.Item
 export default class React16 extends React.Component {
@@ -29,7 +31,15 @@ export default class React16 extends React.Component {
   }
   // static contextType = Context
   render() {
-    console.log("2222::: ", 2222);
+    // 调用实现的promise
+    new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(111)
+        resolve(1)
+      }, 2000)
+    }).then((val) => {
+      console.log("val::", val)
+    })
     const __html = 'First Second'
     const { increment } =this.state;
     const initialCount = 1
