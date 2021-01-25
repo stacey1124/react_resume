@@ -12,7 +12,7 @@ export default class CallApplyBind {
       name: "xyf"
     }
     var callObj = {
-      name: "call"
+      name: "call"                             
     }
     var applyObj = {
       name: "apply"
