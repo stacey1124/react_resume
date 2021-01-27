@@ -15,10 +15,14 @@ import { Button } from 'antd'
 // }
 export default function Remarks() {
   const [vis, isVis] = useState(false)
+  const showModal = () => {
+    isVis(true)
+  }
   return (
     <Fragment>
       <h1>HOOK</h1>
-      <Button onClick={() => isVis(true)}>点击出现Modal</Button>
+      {/* <Button onClick={() => isVis(true)}>点击出现Modal</Button> */}
+      <Button onClick={showModal}>点击出现Modal</Button>
       {vis ? (<Modal closeModal={(isShow) => isVis(isShow)}></Modal>) : null}
     </Fragment>
   )
