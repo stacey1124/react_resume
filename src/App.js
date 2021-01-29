@@ -19,7 +19,7 @@ export default class App extends Component {
     console.log("props", this.props.children);
     return (
       <div className="App">
-        <Link to="/">首页</Link>
+        <Link to="/">首页(Redux)</Link>
         <Link to="/resume">简历</Link>
         <Link to="/nav">antd组件</Link>
         <Link to="/nav/message/2">视频</Link>
