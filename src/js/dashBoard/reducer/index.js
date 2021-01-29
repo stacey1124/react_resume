@@ -26,12 +26,12 @@ export default (state = defaultState, action) => {
   // }
   if(action.type === INCREMENT) {
     let newState = JSON.parse(JSON.stringify(state))
-    newState.value = action.value + 1
+    newState.value = newState.value + 1
     return newState
   }
   if(action.type === DECREMENT) {
     let newState = JSON.parse(JSON.stringify(state))
-    newState.value = action.value - 1
+    newState.value = newState.value - 1
     return newState
   }
   if(action.type === INPUT_CHANGE) {
