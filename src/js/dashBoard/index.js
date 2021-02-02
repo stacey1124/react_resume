@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react"
 import DashBoardUI from './dashBordUI'
 import store from '../Store'
+import axios from 'axios'
 import { INCREMENT, DECREMENT, ADD_ITEM, INPUT_CHANGE, DEL_ITEM } from '../Store/actionTypes'
 import { 
   handleIncrement_action, 
@@ -22,6 +23,11 @@ export default class DashBoard extends Component {
     console.log(store.getState())
     this.setState(store.getState())
     // this.setState(store.getState())
+  }
+  componentDidMount() {
+    axios.get('').then((res) => {
+      console.log('res::', res);
+    })
   }
 
   handleClick = () => {

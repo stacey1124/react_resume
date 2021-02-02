@@ -72,4 +72,56 @@ export default class CallApplyBind {
     // *****************end
     }
 
+    //继承
+      // 继承 1、组合继承（通过父构造函数.call继承父类的属性，改变子类的原型=new 父类）
+  //缺点：继承父类函数的时候调用了父类构造函数，导致子类原型上多了不必要的父类属性
+  // function Parent(val) {
+  //   this.value = val
+  // }
+  // Parent.prototype.getValue = function() {
+  //   console.log('this::', this);
+  //   console.log(this.value)
+  // }
+  // function Child(val) {
+  //   Parent.call(this, val)
+  // }
+  // Child.prototype = new Parent()
+  // console.log('Child.prototype::', Child.prototype);
+  // var c = new Child("cc");
+  // c.getValue()
+  // //寄生组合继承
+  // //将父类的原型赋值给子类，并将构造函数设为子类
+  // Child.prototype = Object.create(Parent.prototype, {
+  //   constructor: {
+  //     value: Child,
+  //     enumerable: false,
+  //     writable: true,
+  //     configurable: true
+  //   }
+  // })
+  // console.log('Child.prototype::', Child.prototype);
+
+  // var c = new Child("cc");
+  // c.getValue()
+ //方法3：class继承
+  // class Parent {
+  //   constructor(val) {
+  //     this.value = val
+  //   }
+  //   getValue() {
+  //     console.log(this.value)
+  //   }
+  // }
+
+  // class Child extends Parent {
+  //   constructor(val) {      
+  //     console.log('val::', val);
+  //     super(val)
+  //     // console.log('super(val)::', super(val));
+  //   }
+  // }
+  // var c = new Child("aa")
+  // console.log('c::', c);
+  
+  // c.getValue()
 }
