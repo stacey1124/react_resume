@@ -158,11 +158,11 @@ export default class FormDialog extends Component {
         </div>
                       
         {/* 多选 */}
-        <Checkbox
+        {/* <Checkbox
           onChange={this.onCheckAllChange}
         >
           全选
-        </Checkbox>
+        </Checkbox> */}
         <CheckboxGroup options={plainOptions} value={checkList} onChange={this.onChange}>
 
         </CheckboxGroup>
