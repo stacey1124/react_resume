@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
-import Resume from './js/resume'
-import Nav from './js/Nav'
-import Dashboard from './js/dashBoard'
+// import Resume from './js/resume'
+import Society from './components/society'
+// import Nav from './js/Nav'
+import School from './components/school'
+// import Dashboard from './js/dashBoard'
+import Index from './components'
 import Msg from './js/msg'
 import VideoView from './js/Nav/Video'
 import App from './App';
@@ -34,11 +37,11 @@ import './index.css';
 const routeConfig = [
   { path: '/',
     component: App,
-    indexRoute: { component: Dashboard }, 
+    indexRoute: { component: Index }, 
     childRoutes: [
-      { path: 'resume', component: Resume },
-      { path: 'nav', 
-        component: Nav,
+      { path: 'society', component: Society },
+      { path: 'school', 
+        component: School,
         childRoutes: [
           { path: '/message/:id', component: VideoView },
           { path: 'message/:id', 
@@ -52,6 +55,12 @@ const routeConfig = [
       },
       { path: 'react16', component: React16 }
     ]
+  },{
+    path: 'society',
+    component: Society
+  },{
+    path: 'school',
+    component: School
   }
 ]
 

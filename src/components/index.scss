@@ -1,0 +1,12 @@
+.search-wrap {
+  width: 80%;
+  height: 80px;
+  .search-left {
+    display: inline-block;
+  }
+  .search-right {
+    display: inline-block;
+    position: relative;
+    top: -6px;
+  }
+}

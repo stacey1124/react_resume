@@ -1,0 +1,28 @@
+.select {
+  :global {
+    .ant-select-selector {
+      color: red;
+      padding-top: 4px !important;
+      height: 40px !important;
+    }
+  }
+}
+.Search {
+  :global {
+    .ant-input {
+      height: 40px !important;
+    }
+  }
+
+}
+.Search {
+  :global {
+    .ant-input-group {
+      margin-top: -4px !important;
+      width: 560px;
+    }
+    // .ant-btn {
+    //   height: 40px !important;
+    // }
+  }
+}

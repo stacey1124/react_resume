@@ -36,18 +36,98 @@
     transform: rotate(360deg);
   }
 }
+/* 样式初始化 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+address, cite, dfn, em, var { font-style:normal; }
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+small{ font-size:12px; }
+ul, ol { list-style:none; }
+a { text-decoration:none; }
+a:hover { text-decoration:none; }
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
 
 html, body {
   height: 100%;
 }
-
 .App {
+  min-width: 1080px;
   height: 100%;
   overflow: auto;
 }
-
-a {
-  display: inline-block;
-  padding: 10px 20px 0;
-  color: #282c34;
+.header {
+  width: 100%;
+  line-height: 80px;
+  height: 80px;
+  position: relative;
+}
+.header-bottom {
+  box-shadow: 0 2px 4px 0 rgb(245 242 242 / 50%);
+}
+.header-video {
+  position: absolute;
+  z-index: -9999;
+  margin-top: -80px;
+}
+.header-logo {
+  display: block;
+  position: absolute;
+}
+.header-logo img {
+  width: 308px;
+  height: 27px;
+}
+.nav-list {
+  position: absolute;
+  min-width: 900px;
+  height: 80px;
+  left: 43%;
+}
+.nav-list li {
+  float: left;
+  width: 100px;
+  height: 80px;
+  margin-left: 40px;
+  padding-left: 34px;
+  line-height: 80px;
+}
+.nav-list .list-item:first-child {
+  width: 73px;
+  padding-left: 0;
+  margin-left: 10px;
+}
+.nav-list .list-item a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: #fff;
+}
+.nav-list .list-item a:hover {
+  cursor: pointer;
+  border-bottom: 2px solid #fff;
+}
+.nav-list .list-item-blue a {
+  color: #1e69b9;
+}
+.nav-list .list-item-blue a:hover {
+  border-bottom: 2px solid #1e69b9;
+}
+.login-wrap {
+  float: right;
+}
+.login-wrap .login-regist {
+  width: 115px;
+  line-height: 40px;
+  font-size: 13px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #1e69b9;
+  margin-top: 20px;
+  margin-right: 20px;
 }
