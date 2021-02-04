@@ -7,10 +7,7 @@ import Society from './components/society'
 import School from './components/school'
 // import Dashboard from './js/dashBoard'
 import Index from './components'
-import Msg from './js/msg'
-import VideoView from './js/Nav/Video'
 import App from './App';
-import React16 from './js/React16'
 
 import './index.css';
 
@@ -42,18 +39,18 @@ const routeConfig = [
       { path: 'society', component: Society },
       { path: 'school', 
         component: School,
-        childRoutes: [
-          { path: '/message/:id', component: VideoView },
-          { path: 'message/:id', 
-            // onEnter: function (nextState, replaceState) {//进入路由时
-            //   replaceState(null, '/message/' + nextState.params.id)
-            // }
-            // 当url为/nav/message/2 时跳转到  /message/2
-            onEnter: ({ params }, replace) => replace(`/message/${params.id}`)
-          }
-        ]
+        // childRoutes: [
+        //   { path: '/message/:id', component: VideoView },
+        //   { path: 'message/:id', 
+        //     // onEnter: function (nextState, replaceState) {//进入路由时
+        //     //   replaceState(null, '/message/' + nextState.params.id)
+        //     // }
+        //     // 当url为/nav/message/2 时跳转到  /message/2
+        //     onEnter: ({ params }, replace) => replace(`/message/${params.id}`)
+        //   }
+        // ]
       },
-      { path: 'react16', component: React16 }
+      // { path: 'react16', component: React16 }
     ]
   },{
     path: 'society',

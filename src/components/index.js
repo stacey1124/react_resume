@@ -1,5 +1,6 @@
 import { Fragment } from "react"
 import { Select, Input } from 'antd'
+import fetch from 'isomorphic-fetch'
 import styles from './index.module.scss'
 import './index.scss'
 
@@ -7,14 +8,18 @@ const { Option } = Select
 const { Search } = Input
 //首页
 export default () => {
-  // let selectVal;
-  // const handleChange = (val) => {
-  //   selectVal = val
-  // }
-  // const onSearch = (val) => {
-  //   console.log('val::', val, selectVal);
+  let selectVal = 'school';
+  const handleChange = (val) => {
+    selectVal = val
+  }
+  const onSearch = (val) => {
+    console.log('val::', val, selectVal);
+    console.log('fetch::', fetch);
     
-  // }
+    fetch('http://127.0.0.1:8080/mock/11/api/stacey/school/search')
+    .then((res)=>console.log("res",res))
+    
+  }
 
   return(
     <Fragment>
