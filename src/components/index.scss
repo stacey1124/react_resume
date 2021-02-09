@@ -10,3 +10,18 @@
     top: -6px;
   }
 }
+.album {
+  width: 900px;
+  img {
+    width: 30%;
+  }
+  img:nth-child(3n)  {
+    margin-right: 10%
+  }
+}
+.banner {
+  img {
+    width: 1680px;
+    height: 650px;
+  }
+}
