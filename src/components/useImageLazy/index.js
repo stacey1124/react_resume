@@ -28,7 +28,7 @@ const useImageLazy = (domList) => {
   let clientHeight = document.documentElement.clientHeight;
   // console.log('clientHeight::', clientHeight);
   
-  const getTop = () => {
+  const getTop = () => {  
     for(let i = 0; i < domList.length; i++) {
       let { top } = domList[i].getBoundingClientRect()
       let len = domList.length
