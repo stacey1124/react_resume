@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LazyDialog from '../LazyDialog'
-import './index.scss'
+// import './index.scss'
 
 import { Modal, Button } from 'antd'
 import MutipleForm from './src/mutiple'

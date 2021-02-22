@@ -1,4 +1,4 @@
-import {  INCREMENT, DECREMENT, ADD_ITEM, INPUT_CHANGE, DEL_ITEM } from './actionTypes'
+import {  INCREMENT, DECREMENT, ADD_ITEM, INPUT_CHANGE, DEL_ITEM, GET_LIST, GET_MY_LIST } from './actionTypes'
 
 export const handleIncrement_action = () => {
   return {
@@ -22,3 +22,12 @@ export const delItem_action = (index) => {
     index
   }
 }
+export const getList_action = (data) => {
+  console.log("data12:", data)
+  return {type: GET_LIST, data}
+}
+// export const getMyListAction = () => {
+// }
+export const getMyListAction = () => ({
+  type: GET_MY_LIST
+})

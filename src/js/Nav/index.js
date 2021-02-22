@@ -28,7 +28,8 @@ export default class FormDialog extends Component {
     this.state = {
       // rank_info: 10
       isModalVisible: false,
-      isModalVisible_add: false
+      isModalVisible_add: false,
+      count: 0
     }
   }
 
@@ -82,8 +83,26 @@ export default class FormDialog extends Component {
   onChange = () => {
     
   }
+  handleCount = () => {
+    // this.setState({count: this.state.count + 1})
+    // console.log('this.state.count::', this.state.count);
+    // this.setState({count: this.state.count + 1}, () => {console.log("setState的第二个参数执行时间：", this.state.count)})
+    this.setState({count: this.state.count})
+    this.setState((state, props) => {return {count: state.count + 1}})
+    this.setState((state, props) => {return {count: state.count + 1}})
+    this.setState((state, props) => {return {count: state.count + 1}})
+    this.setState((state, props) => {console.log("state.count:", state.count)})
+    // console.log(this.state.count)
+  }
+  // handleCount = () => {//class中的方法不会自己绑定this，所以需要手动绑定
+  //   console.log("箭头函数的this:", this)
+  // }
+  componentDidUpdate() {
+    console.log("componentDidUpdate:", this.state.count)
+  }
   
   render() {
+    console.log("render执行", this.state.count)
     // console.log(`this.props.children:${this.props.children}`);
     // const { form } = this.props
     // const { getFieldDecorator, getFieldValue, resetFields } = form
@@ -101,7 +120,8 @@ export default class FormDialog extends Component {
     ]
     let {
       isModalVisible,
-      isModalVisible_add
+      isModalVisible_add,
+      count
     } = this.state;
     return (
       <Fragment>
@@ -166,6 +186,8 @@ export default class FormDialog extends Component {
         <CheckboxGroup options={plainOptions} value={checkList} onChange={this.onChange}>
 
         </CheckboxGroup>
+        <button onClick={this.handleCount}>点击计数+1</button>
+        <span>{count}</span>
       </Fragment>
     )
   }

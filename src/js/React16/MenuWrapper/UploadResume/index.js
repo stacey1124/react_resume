@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import UploadDialog from './UploadDialog'
 import { Button } from 'antd'
-import './index.scss'
+// import './index.css'
 
 export default class UploadResume extends React.Component {
   constructor(props) {

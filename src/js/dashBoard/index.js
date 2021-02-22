@@ -8,7 +8,9 @@ import {
   handleDecrement_action, 
   handleChange_action,
   handleAddItem_action,
-  delItem_action
+  delItem_action,
+  getList_action,
+  getMyListAction
 } from '../Store/actionCreators'
 
 export default class DashBoard extends Component {
@@ -25,9 +27,16 @@ export default class DashBoard extends Component {
     // this.setState(store.getState())
   }
   componentDidMount() {
-    axios.get('').then((res) => {
-      console.log('res::', res);
-    })
+    // axios.get('http://127.0.0.1:8080/mock/11/api/stacey/getList').then((res) => {
+    //   console.log('res::', res);
+    //   const data = res.data
+    //   const action = getList_action(data)
+    //   store.dispatch(action)
+    // })
+    const action = getMyListAction();
+    store.dispatch(action)
+    console.log(action)
+
   }
 
   handleClick = () => {

@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, ADD_ITEM, INPUT_CHANGE, DEL_ITEM } from '../../Store/actionTypes'
+import { INCREMENT, DECREMENT, ADD_ITEM, INPUT_CHANGE, DEL_ITEM, GET_LIST } from '../../Store/actionTypes'
 const defaultState = {
   value: 0,
   listData: [
@@ -52,6 +52,12 @@ export default (state = defaultState, action) => {
     console.log('newState.listData::', newState.listData);
     newState.listData.splice(action.index, 1)
     return newState
+  }
+  if(action.type === GET_LIST) {
+    let newState = JSON.parse(JSON.stringify(state))
+    newState.listData = action.data.data.list
+    console.log("get_list_action.data", action.data.data.list)
+    return newState;
   }
   return state
 }
